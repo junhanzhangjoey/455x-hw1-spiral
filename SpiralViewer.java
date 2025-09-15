@@ -1,7 +1,12 @@
 import java.util.Scanner;
 import javax.swing.JFrame;
 import java.awt.Point;
-
+/**
+ * this class take I/O input from the user, user need to enter starting coordinate and initial segment length,
+   there is a precondition for the length, it has to be greater than zero, it will keep letting user input the length
+   until it satisfy the precondition. The user also need to enter number of segments and also have the same precondition(greater than 0).
+   we use JFrame(a top-level window in Java Swing that holds components) to displays the spiral.
+ */
 public class SpiralViewer{
 
    public static void main(String[] args){

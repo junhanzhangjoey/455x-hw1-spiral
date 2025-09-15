@@ -47,22 +47,30 @@ public class SpiralGenerator {
    }
    /**
     Since in the test function we need to get unitLength from the generator, we need a method that get the unitLength of a SpiralGenerator
+    It returns unit length of the Spiral
    */ 
    public int getUnitLength(){
       return this.unitLength;
    }
-   
+   /**
+    get the start position x of a SpiralGenerator for tester
+    it returns x position of the starting position   
+   */ 
    public int getStartX(){
       return startPosition.x;
    }
-
+   /**
+    get the start position y of a SpiralGenerator for tester
+    it returns y position of the starting position 
+   */ 
    public int getStartY(){
       return startPosition.y;
    }
 
    /**
-      Return the coordinates of the next line segment in the spiral.
-      
+      According to the nextLength, step, direction, startPosition, nextLength we generate next line segment.
+      we need to keep updating the these variable (step, direction, startPosition,nextLength), so that next function call will have correct information about the segment.
+      Return a Line2D instance, which is the next line segment in the spiral.
     */
    public Line2D nextSegment() {
       int dx=0;
@@ -70,36 +78,28 @@ public class SpiralGenerator {
       Point endPoint;
       if(direction==0){
          dx=nextLength;
-	 direction=1;
+	      direction=1;
       }else if(direction==1){
          dy=-nextLength;
-	 direction=2;
+	      direction=2;
       }else if(direction==2){
          dx=-nextLength;
-	 direction=3;
+	      direction=3;
       }else{
          dy=nextLength;
-	 direction=0;
+	      direction=0;
       }
       endPoint = new Point(this.startPosition.x + dx,this.startPosition.y + dy);
       Line2D res = new Line2D.Double(this.startPosition, endPoint);
       startPosition=endPoint;
       if(step == 1){
          this.nextLength+=this.unitLength;
-	 step=0;
+	      step=0;
       }else{
          step=1;  
       }
       return res;
 
    }
-
-   //public static void main(String[] args){
-     // SpiralGenerator sg =new SpiralGenerator(new Point(0,0),10);
-      //for(int i=0;i<10;i++){
-         //Line2D line=sg.nextSegment();
-	 //System.out.println(line.getX1()+" "+line.getY1()+" "+line.getX2()+" "+line.getY2());
-      //}
-   //}
 }
 
