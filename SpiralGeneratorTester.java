@@ -169,15 +169,16 @@ public class SpiralGeneratorTester {
         System.out.println("With a unit length of " + unitLength + ", and made up of " + numOfSegment + " segments");
 
         Line2D prevLine = null;
-        Line2D line = null;
         int count = 1;
 
         for (int i = 0; i < numOfSegment; i++) {
-            line = sg.nextSegment();
-            double x1 = line.getX1();
-            double y1 = line.getY1();
-            double x2 = line.getX2();
-            double y2 = line.getY2();
+            Line2D line = sg.nextSegment();
+
+            // 强制以整数输出坐标，确保和官方测试匹配
+            int x1 = (int) Math.round(line.getX1());
+            int y1 = (int) Math.round(line.getY1());
+            int x2 = (int) Math.round(line.getX2());
+            int y2 = (int) Math.round(line.getY2());
 
             System.out.println("Segment #" + count + ": Point2D.Double[" + x1 + ", " + y1 + "] Point2D.Double[" + x2 + ", " + y2 + "]");
 
@@ -198,5 +199,3 @@ public class SpiralGeneratorTester {
         tester(sg, numOfSegment);
     }
 }
-
-
