@@ -165,17 +165,17 @@ import java.awt.Point;
  */
 public class SpiralGeneratorTester {
 
-    // 判断线段是否垂直
+    // Check if a segment is vertical
     public static boolean isVertical(Line2D seg) {
         return seg.getX1() == seg.getX2();
     }
 
-    // 判断线段是否水平
+    // Check if a segment is horizontal
     public static boolean isHorizontal(Line2D seg) {
         return seg.getY1() == seg.getY2();
     }
 
-    // 判断两条线段是否相连
+    // Check if two segments are connected
     public static boolean isConnected(Line2D seg1, Line2D seg2) {
         return (seg1.getX1() == seg2.getX1() && seg1.getY1() == seg2.getY1())
             || (seg1.getX1() == seg2.getX2() && seg1.getY1() == seg2.getY2())
@@ -183,7 +183,7 @@ public class SpiralGeneratorTester {
             || (seg1.getX2() == seg2.getX2() && seg1.getY2() == seg2.getY2());
     }
 
-    // 判断两条线段是否垂直（利用向量点积）
+    // Check if two segments are perpendicular
     public static boolean isPerpendicular(Line2D seg1, Line2D seg2) {
         double dx1 = seg1.getX2() - seg1.getX1();
         double dy1 = seg1.getY2() - seg1.getY1();
@@ -192,9 +192,9 @@ public class SpiralGeneratorTester {
         return Math.abs(dx1 * dx2 + dy1 * dy2) < 1e-6;
     }
 
-    // Tester 方法：生成 spiral 并检查
+    // Generate spiral and check segments
     public static void tester(SpiralGenerator sg, int numOfSegment) {
-        int step = 0; // 用于判断 horizontal / vertical 轮流
+        int step = 0;
         int unitLength = sg.getUnitLength();
         int currLength = unitLength;
         int startX = sg.getStartX();
@@ -215,14 +215,12 @@ public class SpiralGeneratorTester {
 
             System.out.println("Segment #" + count + ": Point2D.Double[" + x1 + ", " + y1 + "] Point2D.Double[" + x2 + ", " + y2 + "]");
 
-            // 检查水平/垂直
             boolean horizontal = isHorizontal(line);
             boolean vertical = isVertical(line);
 
             if (!horizontal && !vertical) {
                 System.out.println("FAILED: segment is not horizontal or vertical.  Skipping pair tests.");
             } else if (prevLine != null) {
-                // 只在前一个段存在且当前段水平或垂直时做 pair 测试
                 if (!isConnected(prevLine, line)) {
                     System.out.println("FAILED: last two segments are not connected");
                 }
@@ -231,7 +229,6 @@ public class SpiralGeneratorTester {
                 }
             }
 
-            // 更新长度和 step
             if (step == 1) {
                 currLength += unitLength;
             }
@@ -239,16 +236,14 @@ public class SpiralGeneratorTester {
             prevLine = line;
             count++;
         }
-        System.out.println(); // 每个 SpiralGenerator 测试后换行
+        System.out.println();
     }
 
     public static void main(String[] args) {
-        // 测试不同参数
         SpiralGenerator sg1 = new SpiralGenerator(new Point(200, 200), 10);
         SpiralGenerator sg2 = new SpiralGenerator(new Point(100, 100), 5);
         SpiralGenerator sg3 = new SpiralGenerator(new Point(50, 50), 1);
 
-        // 测试每个 SpiralGenerator
         tester(sg1, 10);
         tester(sg2, 8);
         tester(sg3, 6);
