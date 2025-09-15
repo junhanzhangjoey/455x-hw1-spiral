@@ -45,6 +45,20 @@ public class SpiralGenerator {
       this.step=0;
       this.unitLength=unitLength;
    }
+   /**
+    Since in the test function we need to get unitLength from the generator, we need a method that get the unitLength of a SpiralGenerator
+   */ 
+   public int getUnitLength(){
+      return this.unitLength;
+   }
+   
+   public int getStartX(){
+      return startPosition.x;
+   }
+
+   public int getStartY(){
+      return startPosition.y;
+   }
 
    /**
       Return the coordinates of the next line segment in the spiral.
