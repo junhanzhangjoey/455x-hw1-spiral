@@ -99,7 +99,5 @@ public class SpiralGenerator {
          step=1;  
       }
       return res;
-
    }
 }
-

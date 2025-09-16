@@ -112,9 +112,9 @@ public class SpiralGeneratorTester{
 
          System.out.println("Segment #"+ count +": Point2D.Double[" + x1 + ", " + y1 + "] Point2D.Double[" + x2 + ", " + y2 + "]");
          if(step == 0 && !isHorizontal){
-            System.out.println("FAILED: segment is not horizontal, Skipping pair tests");
+            System.out.println("FAILED: segment is not horizontal.  Skipping pair tests.");
          }else if(step == 1 && !isVertical){
-            System.out.println("FAILED: segment is not vertical, Skipping pair tests");
+            System.out.println("FAILED: segment is not vertical.  Skipping pair tests.");
          }else if(prevLine != null){
             if((step==0 && !lengthHorizontal(line,currLength)) || (step==1&&!lengthVertical(line, currLength))){
                System.out.println("FAILED: segment length is incorrect");
@@ -144,6 +144,20 @@ public class SpiralGeneratorTester{
       int unitLength=10;
       SpiralGenerator sg = new SpiralGenerator(new Point(startx,starty),unitLength);
       int numOfSegment = 100;
-      tester(sg, numOfSegment);   
+      tester(sg, numOfSegment);
+      
+      startx=0;
+      starty=0;
+      unitLength=15;
+      sg = new SpiralGenerator(new Point(startx,starty),unitLength);
+      numOfSegment = 50;
+      tester(sg, numOfSegment);
+
+      startx=400;
+      starty=500;
+      unitLength=1;
+      sg = new SpiralGenerator(new Point(startx,starty),unitLength);
+      numOfSegment = 30;
+      tester(sg, numOfSegment);
    }
 }
