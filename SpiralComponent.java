@@ -17,7 +17,7 @@ public class SpiralComponent extends JComponent{
  * @param numOfSegment number of segments to be generated
  */
    public SpiralComponent(SpiralGenerator sg, int numOfSegment){
-      this.sg=sg;
+      this.sg = sg;
       this.numOfSegment=numOfSegment;
    }
 /**
@@ -29,7 +29,7 @@ public class SpiralComponent extends JComponent{
    public void paintComponent(Graphics g){
       Graphics2D g2 = (Graphics2D) g;
       
-      for(int i = 0; i<this.numOfSegment; i++){
+      for(int i = 0; i < this.numOfSegment; i++){
          Line2D line = sg.nextSegment();
          g2.draw(line);
       }

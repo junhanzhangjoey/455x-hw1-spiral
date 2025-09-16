@@ -6,6 +6,11 @@ import java.awt.Point;
    there is a precondition for the length, it has to be greater than zero, it will keep letting user input the length
    until it satisfy the precondition. The user also need to enter number of segments and also have the same precondition(greater than 0).
    we use JFrame(a top-level window in Java Swing that holds components) to displays the spiral.
+   How to Run:
+   1. compile all needed files javac SpiralViewer.java SpiralGenerator.java SpiralComponent.java
+   2. Run the viewer: java SpiralViewer.
+   3. Follow prompts in the console to enter coordinates, initial length, and number of segments.
+   4. The spiral will be displayed in a window.
  */
 public class SpiralViewer{
 
@@ -30,7 +35,7 @@ public class SpiralViewer{
 	    System.out.println("Error: value must be > 0");
 	 }else{
 	    break;
-	 }	 
+	 }
       }
       int numOfSegment=0;
       while(true){

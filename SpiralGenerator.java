@@ -39,11 +39,11 @@ public class SpiralGenerator {
       @param unitLength in pixels, must be > 0
    */
    public SpiralGenerator(Point startPosition, int unitLength) {
-      this.startPosition=startPosition;
-      this.nextLength=unitLength;
-      this.direction=0;
-      this.step=0;
-      this.unitLength=unitLength;
+      this.startPosition = startPosition;
+      this.nextLength = unitLength;
+      this.direction = 0;
+      this.step = 0;
+      this.unitLength = unitLength;
    }
    /**
     Since in the test function we need to get unitLength from the generator, we need a method that get the unitLength of a SpiralGenerator
@@ -73,30 +73,30 @@ public class SpiralGenerator {
       Return a Line2D instance, which is the next line segment in the spiral.
     */
    public Line2D nextSegment() {
-      int dx=0;
-      int dy=0;
+      int dx = 0;
+      int dy = 0;
       Point endPoint;
-      if(direction==0){
-         dx=nextLength;
-	      direction=1;
-      }else if(direction==1){
-         dy=-nextLength;
-	      direction=2;
-      }else if(direction==2){
-         dx=-nextLength;
-	      direction=3;
+      if(direction == 0){
+         dx = nextLength;
+	      direction = 1;
+      }else if(direction == 1){
+         dy = -nextLength;
+	      direction = 2;
+      }else if(direction == 2){
+         dx = -nextLength;
+	      direction = 3;
       }else{
-         dy=nextLength;
-	      direction=0;
+         dy = nextLength;
+	      direction = 0;
       }
       endPoint = new Point(this.startPosition.x + dx,this.startPosition.y + dy);
       Line2D res = new Line2D.Double(this.startPosition, endPoint);
-      startPosition=endPoint;
+      startPosition = endPoint;
       if(step == 1){
-         this.nextLength+=this.unitLength;
-	      step=0;
+         this.nextLength += this.unitLength;
+	      step = 0;
       }else{
-         step=1;  
+         step = 1;  
       }
       return res;
    }

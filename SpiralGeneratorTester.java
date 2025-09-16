@@ -6,6 +6,12 @@ import java.awt.Point;
  * - Checking the length of each segment
  * - Determining whether the segment is vertical or horizontal
  * - Verifying if the segment is connected and perpendicular to the previous segment
+ * 
+ * How to Run:
+ * 1. Compile the program:
+ *      javac SpiralGeneratorTester.java
+ * 2. Run the program:
+ *      java SpiralGeneratorTester
  */
 public class SpiralGeneratorTester{
    /**
@@ -14,7 +20,7 @@ public class SpiralGeneratorTester{
     @return true if it is vertical, false if it is not
     */
    public static boolean isVertical(Line2D seg){
-      return seg.getX1()==seg.getX2();
+      return seg.getX1() == seg.getX2();
    }
 
    /**
@@ -23,7 +29,7 @@ public class SpiralGeneratorTester{
     @return true if it is horizontal, false if it is not
     */
    public static boolean isHorizontal(Line2D seg){
-      return seg.getY1()==seg.getY2();
+      return seg.getY1() == seg.getY2();
    }
 
    /**
@@ -42,7 +48,7 @@ public class SpiralGeneratorTester{
       double y21 = seg2.getY1();
       double x22 = seg2.getX2();
       double y22 = seg2.getY2();
-      return (x11==x21&&y11==y21)||(x11==x22&&y11==y22)||(x12==x21&&y12==y21)||(x12==x22&&y12==y22);
+      return (x11 == x21 && y11 == y21) || (x11 == x22 && y11 == y22) || (x12 == x21 && y12 == y21) || (x12 == x22 && y12 == y22);
 
     }
    /**
@@ -76,7 +82,6 @@ public class SpiralGeneratorTester{
       System.out.println("with a unit length of " + unitLength + ", and made up of " + numOfSegment + " segments");
       Line2D prevLine = null;
       Line2D line = null;
-      int count = 1;
       for(int i=0;i<numOfSegment;i++){
          line = sg.nextSegment();
          double x1 = line.getX1();
@@ -84,11 +89,11 @@ public class SpiralGeneratorTester{
          double x2 = line.getX2();
          double y2 = line.getY2();
          
-         boolean isHorizontal=isHorizontal(line);
-         boolean isVertical=isVertical(line);
+         boolean isHorizontal = isHorizontal(line);
+         boolean isVertical = isVertical(line);
 
-         System.out.println("Segment #"+ count +": Point2D.Double[" + x1 + ", " + y1 + "] Point2D.Double[" + x2 + ", " + y2 + "]");
-         if(!isHorizontal&&!isVertical){
+         System.out.println("Segment #" + (i+1) +": Point2D.Double[" + x1 + ", " + y1 + "] Point2D.Double[" + x2 + ", " + y2 + "]");
+         if(!isHorizontal && !isVertical){
             System.out.println("FAILED: segment is not horizontal or vertical. Skipping pair tests.");
          }else if(prevLine != null){
             if(!isConnected(prevLine, line)){
@@ -97,12 +102,11 @@ public class SpiralGeneratorTester{
             boolean prevHorizontal = isHorizontal(prevLine);
             boolean prevVertical = isVertical(prevLine);
 
-            if(!(isHorizontal && prevVertical)&&!(isVertical && prevHorizontal)){
+            if(!(isHorizontal && prevVertical) && !(isVertical && prevHorizontal)){
                System.out.println("FAILED: last two segments are not perpendicular");
             }
          }
-         count++;
-         prevLine=line;
+         prevLine = line;
       }
    }
 
