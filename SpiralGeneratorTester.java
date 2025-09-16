@@ -226,7 +226,7 @@ public class SpiralGeneratorTester {
          } else if (prevSegment != null) {
             boolean connected = (prevSegment.getX2() == seg.getX1() && prevSegment.getY2() == seg.getY1());
             if (!connected) {
-               System.out.println("FAILED: last two segments are not connected");
+               System.out.println("FAILED: last two segments are not connecteds");
             }
 
             boolean prevHorizontal = prevSegment.getY1() == prevSegment.getY2();
