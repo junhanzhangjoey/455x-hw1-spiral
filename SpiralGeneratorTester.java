@@ -172,14 +172,14 @@ import java.awt.geom.Line2D;
 public class SpiralGeneratorTester {
 
     public static void main(String[] args) {
-        // 创建不同测试用例
+        // Create different test cases
         testSpiral(new Point(200, 300), 5, 10);
         testSpiral(new Point(100, 100), 10, 8);
         testSpiral(new Point(250, 250), 20, 12);
     }
 
     /**
-     * 测试生成螺旋的函数
+     * Tests generating a spiral with the given parameters.
      */
     private static void testSpiral(Point start, int unitLength, int numSegments) {
         System.out.println("Making a spiral starting from " + start);
@@ -192,20 +192,20 @@ public class SpiralGeneratorTester {
             Line2D currSeg = gen.nextSegment();
             System.out.println("Segment #" + i + ": " + formatLine(currSeg));
 
-            // 检查水平或垂直
+            // Check if the segment is horizontal or vertical
             if (!isHorizontalOrVertical(currSeg)) {
                 System.out.println("FAILED: segment is not horizontal or vertical.  Skipping pair tests.");
                 prevSeg = currSeg;
                 continue;
             }
 
-            // 检查与上一条线段是否连接
+            // Check if the current segment is connected to the previous segment
             if (prevSeg != null) {
                 if (!areConnected(prevSeg, currSeg)) {
                     System.out.println("FAILED: last two segments are not connected");
                 }
 
-                // 检查是否垂直
+                // Check if the current segment is perpendicular to the previous segment
                 if (!arePerpendicular(prevSeg, currSeg)) {
                     System.out.println("FAILED: last two segments are not perpendicular");
                 }
@@ -214,21 +214,25 @@ public class SpiralGeneratorTester {
             prevSeg = currSeg;
         }
 
-        System.out.println(); // 空行分隔不同测试
+        System.out.println(); // Blank line separates different tests
     }
 
+    // Formats a line segment for printing
     private static String formatLine(Line2D line) {
         return line.getP1() + " " + line.getP2();
     }
 
+    // Returns true if the line segment is horizontal or vertical
     private static boolean isHorizontalOrVertical(Line2D line) {
         return line.getP1().getX() == line.getP2().getX() || line.getP1().getY() == line.getP2().getY();
     }
 
+    // Returns true if two line segments are connected (share an endpoint)
     private static boolean areConnected(Line2D a, Line2D b) {
         return a.getP2().equals(b.getP1());
     }
 
+    // Returns true if two line segments are perpendicular to each other
     private static boolean arePerpendicular(Line2D a, Line2D b) {
         boolean aHorizontal = a.getP1().getY() == a.getP2().getY();
         boolean aVertical = a.getP1().getX() == a.getP2().getX();
@@ -238,6 +242,3 @@ public class SpiralGeneratorTester {
         return (aHorizontal && bVertical) || (aVertical && bHorizontal);
     }
 }
-
-
-
