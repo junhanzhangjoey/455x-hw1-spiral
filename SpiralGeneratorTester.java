@@ -214,8 +214,8 @@ public class SpiralGeneratorTester {
     * @param numSegments the total number of segments to generate
     */
    private static void testSpiral(Point start, int unitLength, int numSegments) {
-      System.out.println("" + start);
-      System.out.println("" + unitLength + ", and made up of " + numSegments + " segments:");
+      System.out.println("Making a spiral starting from " + start);
+      System.out.println("with a unit length of " + unitLength + ", and made up of " + numSegments + " segments:");
 
       SpiralGenerator spiral = new SpiralGenerator(start, unitLength);
       Line2D prevSegment = null;
@@ -223,26 +223,26 @@ public class SpiralGeneratorTester {
       for (int i = 1; i <= numSegments; i++) {
          Line2D seg = spiral.nextSegment();
 
-         System.out.printf(
-               "",
-               i, seg.getX1(), seg.getY1(), seg.getX2(), seg.getY2());
+         // System.out.printf(
+         //       "Segment #%d: Point2D.Double[%.1f, %.1f] Point2D.Double[%.1f, %.1f]%n",
+         //       i, seg.getX1(), seg.getY1(), seg.getX2(), seg.getY2());
 
          boolean isHorizontal = seg.getY1() == seg.getY2();
          boolean isVertical = seg.getX1() == seg.getX2();
 
          if (!isHorizontal && !isVertical) {
-            System.out.println("FAILED: ");
+            System.out.println("FAILED: segment is not horizontal or vertical. Skipping pair tests.");
          } else if (prevSegment != null) {
             boolean connected = (prevSegment.getX2() == seg.getX1() && prevSegment.getY2() == seg.getY1());
             if (!connected) {
-               System.out.println("FAILED: ");
+               System.out.println("FAILED: last two segments are not connected");
             }
 
             boolean prevHorizontal = prevSegment.getY1() == prevSegment.getY2();
             boolean prevVertical = prevSegment.getX1() == prevSegment.getX2();
             boolean perpendicular = (prevHorizontal && isVertical) || (prevVertical && isHorizontal);
             if (!perpendicular) {
-               System.out.println("FAILED: ");
+               System.out.println("FAILED: last two segments are not perpendicular");
             }
          }
 
