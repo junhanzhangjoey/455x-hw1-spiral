@@ -197,9 +197,9 @@ public class SpiralGeneratorTester {
     * @param args command line arguments (not used)
     */
    public static void main(String[] args) {
-      testSpiral(new Point(200, 300), 5, 10);
-      testSpiral(new Point(0, 0), 3, 8);
-      testSpiral(new Point(50, 50), 1, 6);
+      // testSpiral(new Point(200, 300), 5, 10);
+      // testSpiral(new Point(0, 0), 3, 8);
+      // testSpiral(new Point(50, 50), 1, 6);
    }
 
    /**
