@@ -24,7 +24,7 @@ public class SpiralGeneratorTester{
     @return true if length is correct, false if it is not
    */
    public static boolean lengthVertical(Line2D seg, double length){
-     return Math.abs(seg.getY1() - seg.getY2()) == length;
+     return Math.abs(seg.getY1() - seg.getY2()) < 1e-6;
    }
 
    /**
@@ -43,7 +43,7 @@ public class SpiralGeneratorTester{
     @return true if length is correct, false if it is not
    */
    public static boolean lengthHorizontal(Line2D seg, double length){
-     return Math.abs(seg.getX1() - seg.getX2()) == length;
+     return Math.abs(seg.getX1() - seg.getX2()) < 1e-6;
    }
 
    /**
