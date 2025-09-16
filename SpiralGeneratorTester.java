@@ -224,25 +224,25 @@ public class SpiralGeneratorTester {
          Line2D seg = spiral.nextSegment();
 
          System.out.printf(
-               "Segment #%d: Point2D.Double[%.1f, %.1f] Point2D.Double[%.1f, %.1f]%n",
+               "",
                i, seg.getX1(), seg.getY1(), seg.getX2(), seg.getY2());
 
          boolean isHorizontal = seg.getY1() == seg.getY2();
          boolean isVertical = seg.getX1() == seg.getX2();
 
          if (!isHorizontal && !isVertical) {
-            System.out.println("FAILED: segment is not horizontal or vertical. Skipping pair tests.");
+            System.out.println("FAILED: ");
          } else if (prevSegment != null) {
             boolean connected = (prevSegment.getX2() == seg.getX1() && prevSegment.getY2() == seg.getY1());
             if (!connected) {
-               System.out.println("FAILED: last two segments are not connected");
+               System.out.println("FAILED: ");
             }
 
             boolean prevHorizontal = prevSegment.getY1() == prevSegment.getY2();
             boolean prevVertical = prevSegment.getX1() == prevSegment.getX2();
             boolean perpendicular = (prevHorizontal && isVertical) || (prevVertical && isHorizontal);
             if (!perpendicular) {
-               System.out.println("FAILED: last two segments are not perpendicular");
+               System.out.println("FAILED: ");
             }
          }
 
