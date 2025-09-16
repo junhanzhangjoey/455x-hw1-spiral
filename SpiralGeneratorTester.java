@@ -126,7 +126,7 @@ public class SpiralGeneratorTester{
                boolean prevHorizontal = isHorizontal(prevLine);
                boolean prevVertical = isVertical(prevLine);
 
-               if(!(isHorizontal && prevVertical)||!(isVertical && prevHorizontal)){
+               if(!(isHorizontal && prevVertical)&&!(isVertical && prevHorizontal)){
                   System.out.println("FAILED: last two segments are not perpendicular");
                }
             }
