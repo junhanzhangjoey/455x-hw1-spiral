@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import javax.swing.JFrame;
-import java.awt.Point;
 /**
  * this class take I/O input from the user, user need to enter starting coordinate and initial segment length,
    there is a precondition for the length, it has to be greater than zero, it will keep letting user input the length
@@ -13,18 +12,11 @@ import java.awt.Point;
    4. The spiral will be displayed in a window.
  */
 public class SpiralViewer{
-
+   private static final int WINDOW_WIDTH = 800;
+   private static final int WINDOW_HEIGHT = 500;
    public static void main(String[] args){
 
       Scanner in = new Scanner(System.in);
-
-      System.out.println("Enter the initial position");
-
-      System.out.print("Enter x: ");
-      int x=in.nextInt();
-
-      System.out.print("Enter y: ");
-      int y=in.nextInt();
       
       int initSegment=0;
       while(true){
@@ -50,11 +42,10 @@ public class SpiralViewer{
       }
 
       JFrame frame = new JFrame();
-      frame.setSize(500,800);
+      frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      SpiralGenerator sg = new SpiralGenerator(new Point(x,y),initSegment);
-      SpiralComponent sc = new SpiralComponent(sg,numOfSegment);
+      SpiralComponent sc = new SpiralComponent(initSegment,numOfSegment);
       frame.add(sc);
       frame.setVisible(true);
    }

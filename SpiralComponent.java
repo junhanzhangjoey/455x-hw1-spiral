@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import java.awt.geom.Line2D;
+import java.awt.Point;
 
 /**
  SpiralComponent is a custom Swing component that visualizes a spiral.
@@ -9,15 +10,15 @@ import java.awt.geom.Line2D;
  using Java 2D graphics (Graphics2D and Line2D) within the paintComponent method.
 */
 public class SpiralComponent extends JComponent{
-   private SpiralGenerator sg;
+   private int unitLength;
    private int numOfSegment;
 /**
  * create a SpiralComponent with a SpiralGenerator and number of segments need to be generated.
- * @param sg a SpiralGenerator instance
+ * @param unitLength a unit length of the Spiral
  * @param numOfSegment number of segments to be generated
  */
-   public SpiralComponent(SpiralGenerator sg, int numOfSegment){
-      this.sg = sg;
+   public SpiralComponent(int unitLength, int numOfSegment){
+      this.unitLength = unitLength;
       this.numOfSegment=numOfSegment;
    }
 /**
@@ -28,6 +29,9 @@ public class SpiralComponent extends JComponent{
  */
    public void paintComponent(Graphics g){
       Graphics2D g2 = (Graphics2D) g;
+      int x = getWidth() / 2;
+      int y = getHeight() / 2;
+      SpiralGenerator sg = new SpiralGenerator(new Point(x,y), unitLength);
       
       for(int i = 0; i < this.numOfSegment; i++){
          Line2D line = sg.nextSegment();
